@@ -1,0 +1,19 @@
+{
+  "name": "thirdframe",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "frog dev",
+    "serve": "tsx src/index.tsx"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hono/node-server": "^1.8.2",
+    "frog": "^0.5.5",
+    "hono": "^4.0.10"
+  }
+}
