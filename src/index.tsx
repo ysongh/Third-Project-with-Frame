@@ -18,7 +18,8 @@ app.frame('/', (c) => {
     intents: [
       <Button value="apple">Apple</Button>,
       <Button value="banana">Banana</Button>,
-      <Button value="mango">Mango</Button>
+      <Button value="mango">Mango</Button>,
+      <Button.Link href="https://google.com">Google</Button.Link>,
     ]
   })
 })
