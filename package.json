@@ -15,5 +15,9 @@
     "@hono/node-server": "^1.8.2",
     "frog": "^0.5.5",
     "hono": "^4.0.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.25",
+    "tsx": "^4.7.1"
   }
 }
