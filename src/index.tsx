@@ -5,22 +5,22 @@ export const app = new Frog()
  
 app.frame('/', (c) => {
   const { inputText, buttonValue, status } = c
+  const fruit = inputText || buttonValue
+
   return c.res({
     image: (
-      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
-        {status === 'initial' ? (
-          'Select your fruit!'
-        ) : (
-          `Selected: ${inputText || buttonValue}`
-        )}
+      <div style={{ color: 'black', display: 'flex', fontSize: 60 }}>
+       {status === 'response'
+            ? `Nice choice.${fruit ? ` ${fruit.toUpperCase()}!!` : ''}`
+            : 'Welcome!'}
       </div>
     ),
     intents: [
-      <TextInput placeholder="Enter your fruit..." />,
-      <Button value="apple">Apple</Button>,
-      <Button value="banana">Banana</Button>,
-      <Button value="mango">Mango</Button>,
-      <Button.Link href="https://google.com">Google</Button.Link>,
+      <TextInput placeholder="Enter custom fruit..." />,
+      <Button value="apples">Apples</Button>,
+      <Button value="oranges">Oranges</Button>,
+      <Button value="bananas">Bananas</Button>,
+      status === 'response' && <Button.Reset>Reset</Button.Reset>,
     ]
   })
 })
