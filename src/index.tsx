@@ -52,6 +52,7 @@ app.frame('/names', (c) => {
     intents: [
       <TextInput placeholder="Enter your name..." />,
       <Button>Add</Button>,
+      <Button.Reset>Reset</Button.Reset>,
     ]
   })
 })
