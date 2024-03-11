@@ -1,6 +1,8 @@
 import { serve } from '@hono/node-server'
 import { Button, TextInput, Frog } from 'frog'
- 
+
+import { abi } from './abi'
+
 type State = {
   names: string[]
 }
@@ -56,7 +58,43 @@ app.frame('/names', (c) => {
     ]
   })
 })
+
+app.frame('/transaction', (c) => {
+  return c.res({
+    action: '/finish',
+    image: (
+      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+        Perform a transaction
+      </div>
+    ),
+    intents: [
+      <TextInput placeholder="Value (ETH)" />,
+      <Button.Transaction target="/send-ether">Send Ether</Button.Transaction>,
+    ]
+  })
+})
+
+app.frame('/finish', (c) => {
+  const { transactionId } = c
+  return c.res({
+    image: (
+      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+        Transaction ID: {transactionId}
+      </div>
+    )
+  })
+})
  
+app.transaction('/send-ether', (c) => {
+  const { inputText } = c
+  // Send transaction response.
+  return c.send({
+    chainId: 'eip155:10',
+    to: '0xaD609fDFEa6D40c9F3EDc24748a6E048Af36a349',
+    value: BigInt(inputText || 0),
+  })
+})
+
 const port = 3000
 console.log(`Server is running on port ${port}`)
 
