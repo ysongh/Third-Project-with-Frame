@@ -1,5 +1,5 @@
 import { serve } from '@hono/node-server'
-import { Button, TextInput, Frog } from 'frog'
+import { Button, TextInput, parseEther, Frog } from 'frog'
 
 import { abi } from './abi'
 
@@ -63,7 +63,7 @@ app.frame('/transaction', (c) => {
   return c.res({
     action: '/finish',
     image: (
-      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+      <div style={{ color: 'black', display: 'flex', fontSize: 60 }}>
         Perform a transaction
       </div>
     ),
@@ -78,7 +78,7 @@ app.frame('/finish', (c) => {
   const { transactionId } = c
   return c.res({
     image: (
-      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
+      <div style={{ color: 'black', display: 'flex', fontSize: 60 }}>
         Transaction ID: {transactionId}
       </div>
     )
@@ -91,7 +91,7 @@ app.transaction('/send-ether', (c) => {
   return c.send({
     chainId: 'eip155:10',
     to: '0xaD609fDFEa6D40c9F3EDc24748a6E048Af36a349',
-    value: BigInt(inputText || 0),
+    value: parseEther(inputText!!),
   })
 })
 
