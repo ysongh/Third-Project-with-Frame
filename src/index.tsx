@@ -89,7 +89,7 @@ app.transaction('/send-ether', (c) => {
   const { inputText } = c
   // Send transaction response.
   return c.send({
-    chainId: 'eip155:10',
+    chainId: 'eip155:8453',
     to: '0xaD609fDFEa6D40c9F3EDc24748a6E048Af36a349',
     value: parseEther(inputText!!),
   })
