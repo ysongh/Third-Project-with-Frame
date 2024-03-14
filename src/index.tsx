@@ -70,6 +70,7 @@ app.frame('/transaction', (c) => {
     intents: [
       <TextInput placeholder="Value (ETH)" />,
       <Button.Transaction target="/send-ether">Send Ether</Button.Transaction>,
+      <Button.Transaction target="/mint">Mint</Button.Transaction>,
     ]
   })
 })
@@ -92,6 +93,19 @@ app.transaction('/send-ether', (c) => {
     chainId: 'eip155:8453',
     to: '0xaD609fDFEa6D40c9F3EDc24748a6E048Af36a349',
     value: parseEther(inputText!!),
+  })
+})
+
+app.transaction('/mint', (c) => {
+  const { inputText } = c
+  // Contract transaction response.
+  return c.contract({
+    abi,
+    chainId: 'eip155:8453',
+    functionName: 'mint',
+    args: [69420n],
+    to: '0xaD609fDFEa6D40c9F3EDc24748a6E048Af36a349',
+    value: parseEther(inputText!!)
   })
 })
 
