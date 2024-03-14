@@ -1,7 +1,10 @@
 import { serve } from '@hono/node-server'
 import { Button, TextInput, parseEther, Frog } from 'frog'
+import { config } from 'dotenv'
 
 import { abi } from './abi'
+
+config()
 
 type State = {
   names: string[]
@@ -16,6 +19,8 @@ export const app = new Frog<{State: State}>({
 app.frame('/', (c) => {
   const { inputText, buttonValue, status } = c
   const fruit = inputText || buttonValue
+
+  console.log(process.env.ADDRESS)
 
   return c.res({
     image: (
