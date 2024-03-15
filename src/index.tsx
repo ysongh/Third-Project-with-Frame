@@ -95,7 +95,7 @@ app.transaction('/send-ether', (c) => {
   const { inputText } = c
   // Send transaction response.
   return c.send({
-    chainId: 'eip155:8453',
+    chainId: 'eip155:84532',
     to: '0xaD609fDFEa6D40c9F3EDc24748a6E048Af36a349',
     value: parseEther(inputText!!),
   })
@@ -106,7 +106,7 @@ app.transaction('/mint', (c) => {
   // Contract transaction response.
   return c.contract({
     abi,
-    chainId: 'eip155:8453',
+    chainId: 'eip155:84532',
     functionName: 'mint',
     args: [69420n],
     to: '0xaD609fDFEa6D40c9F3EDc24748a6E048Af36a349',
