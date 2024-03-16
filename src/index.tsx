@@ -3,6 +3,7 @@ import { Button, TextInput, Frog } from 'frog'
 import { config } from 'dotenv'
 
 import { app as transactionApp } from './routes/transaction'
+import { app as nameApp } from './routes/names' 
 
 config()
 
@@ -40,31 +41,8 @@ app.frame('/', (c) => {
   })
 })
 
-app.frame('/names', (c) => {
-  const { inputText, deriveState } = c
-
-  const state = deriveState(previousState => {
-    previousState.names.push(inputText || "")
-  })
-
-  return c.res({
-    image: (
-      <div style={{ color: 'black', display: 'flex', flexDirection: 'column', fontSize: 20 }}>
-        <h1>List of Names</h1>
-        {state.names.map(n => (
-          <p key={n}>{n}</p>
-        ))}
-      </div>
-    ),
-    intents: [
-      <TextInput placeholder="Enter your name..." />,
-      <Button>Add</Button>,
-      <Button.Reset>Reset</Button.Reset>,
-    ]
-  })
-})
-
 app.route('/transaction', transactionApp)
+app.route('/names', nameApp)
 
 const port = 3000
 console.log(`Server is running on port ${port}`)
