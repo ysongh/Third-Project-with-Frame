@@ -7,15 +7,7 @@ import { app as nameApp } from './routes/names'
 
 config()
 
-type State = {
-  names: string[]
-}
-
-export const app = new Frog<{State: State}>({
-  initialState: {
-    names: []
-  }
-})
+export const app = new Frog()
  
 app.frame('/', (c) => {
   const { inputText, buttonValue, status } = c
