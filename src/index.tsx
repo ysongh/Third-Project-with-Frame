@@ -3,7 +3,8 @@ import { Button, TextInput, Frog } from 'frog'
 import { config } from 'dotenv'
 
 import { app as transactionApp } from './routes/transaction'
-import { app as nameApp } from './routes/names' 
+import { app as nameApp } from './routes/names'
+import { app as dataApp } from './routes/data'
 
 config()
 
@@ -35,6 +36,7 @@ app.frame('/', (c) => {
 
 app.route('/transaction', transactionApp)
 app.route('/names', nameApp)
+app.route('/data', dataApp)
 
 const port = 3000
 console.log(`Server is running on port ${port}`)
